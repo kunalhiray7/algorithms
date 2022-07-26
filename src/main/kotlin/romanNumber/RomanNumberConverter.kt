@@ -5,21 +5,21 @@ class RomanNumberConverter {
     private val baseValues = mapOf("I" to 1, "V" to 5, "X" to 10, "L" to 50, "C" to 100, "D" to 500, "M" to 1000)
 
     fun romanToInt(s: String): Int {
-        var value = 0
-        var lastNumber = 0
+        var calculatedNumber = 0
+        var lastDecimalValue = 0
         for (i in s.length - 1 downTo 0) {
             val currentBaseValue = baseValues[s[i].toString()]!!
-            value = executeOperation(currentBaseValue, lastNumber, value)
-            lastNumber = currentBaseValue
+            calculatedNumber = executeOperation(currentBaseValue, lastDecimalValue, calculatedNumber)
+            lastDecimalValue = currentBaseValue
         }
-        return value
+        return calculatedNumber
     }
 
-    private fun executeOperation(decimal: Int, lastNumber: Int, lastDecimal: Int): Int {
-        return if (lastNumber > decimal) {
-            lastDecimal - decimal
+    private fun executeOperation(currentDecimalValue: Int, lastDecimalValue: Int, calculatedNumber: Int): Int {
+        return if (lastDecimalValue > currentDecimalValue) {
+            calculatedNumber - currentDecimalValue
         } else {
-            lastDecimal + decimal
+            calculatedNumber + currentDecimalValue
         }
     }
 }
