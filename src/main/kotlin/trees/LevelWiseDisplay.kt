@@ -1,7 +1,6 @@
 package trees
 
 import java.util.*
-import java.util.concurrent.LinkedBlockingDeque
 
 /*
 Given the root of a binary tree, display the node values at each level. Node values for all levels should be displayed on separate lines.
@@ -16,7 +15,7 @@ class Node {
 class LevelWiseDisplay {
 
     fun displayLevel(tree: Node?) {
-        if(null == tree) {
+        if (null == tree) {
             return
         }
         println(tree.data)
@@ -25,8 +24,9 @@ class LevelWiseDisplay {
     }
 
     fun breadthFirstSearch(tree: Node?) {
-        if(null == tree)
+        if (null == tree) {
             return
+        }
 
         val queue = LinkedList<Node>()
         queue.add(tree)
@@ -36,29 +36,28 @@ class LevelWiseDisplay {
             println(currentNode.data)
 
             // Add left node first.
-            if (currentNode.left != null)
+            if (currentNode.left != null) {
                 queue.add(currentNode.left!!)
+            }
 
             // Add right node next.
-            if (currentNode.right != null)
+            if (currentNode.right != null) {
                 queue.add(currentNode.right!!)
+            }
         }
-
     }
 
     fun isBinaryTree(tree: Node?, min: Int, max: Int): Boolean {
-        if(tree == null) {
+        if (tree == null) {
             return true
         }
 
-        if(tree.data < min || tree.data > max) {
+        if (tree.data < min || tree.data > max) {
             return false
         }
 
         return isBinaryTree(tree.left, min, tree.data) && isBinaryTree(tree.right, tree.data, max)
     }
-
-
 }
 
 fun main() {
