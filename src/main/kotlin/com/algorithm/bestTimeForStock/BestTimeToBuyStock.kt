@@ -38,6 +38,22 @@ class BestTimeToBuyStock {
         return profit
     }
 
+    fun maxProfitWithBuyAndSell(prices: IntArray): Int {
+        var buyIndex = 0
+        var sellIndex = 0
+        prices.forEachIndexed { index, i ->
+            if (i < prices[buyIndex]) {
+                buyIndex = index
+                sellIndex = index
+            }
+            if (i > prices[sellIndex] && index > buyIndex) {
+                sellIndex = index
+            }
+        }
+        println("Buy at ${prices[buyIndex]} and sell at ${prices[sellIndex]}")
+        return prices[sellIndex] - prices[buyIndex]
+    }
+
     fun minLoss(prices: IntArray): Int {
         var loss = Int.MAX_VALUE
         var buySellPair = Pair(-1, -1)
@@ -54,8 +70,8 @@ class BestTimeToBuyStock {
 
 fun main() {
     val bestTimeToBuyStock = BestTimeToBuyStock()
-    println(bestTimeToBuyStock.maxProfit(intArrayOf(7, 1, 5, 3, 6, 4)))
-    println(bestTimeToBuyStock.maxProfit(intArrayOf(7, 6, 4, 3, 1)))
+    println(bestTimeToBuyStock.maxProfitWithBuyAndSell(intArrayOf(7, 1, 5, 3, 6, 4)))
+    println(bestTimeToBuyStock.maxProfitWithBuyAndSell(intArrayOf(7, 6, 4, 3, 1)))
     println(bestTimeToBuyStock.minLoss(intArrayOf(7, 6, 4, 3, 1)))
     println(bestTimeToBuyStock.minLoss(intArrayOf(7, 4, 3, 2, 1)))
     println(bestTimeToBuyStock.minLoss(intArrayOf(10, 7, 5, 4, 1)))
