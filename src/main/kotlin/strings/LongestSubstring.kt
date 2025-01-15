@@ -32,10 +32,10 @@ class LongestSubstring {
         var res = 0
         while (right < s.length) {
             val r: Char = s[right]
-            chars[r.toInt()]++
-            while (chars[r.toInt()] > 1) {
+            chars[r.code]++
+            while (chars[r.code] > 1) {
                 val l: Char = s[left]
-                chars[l.toInt()]--
+                chars[l.code]--
                 left++
             }
             res = res.coerceAtLeast(right - left + 1)
