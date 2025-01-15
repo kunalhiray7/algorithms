@@ -1,7 +1,5 @@
 package array
 
-import kotlin.math.abs
-import kotlin.math.max
 
 /**
  * Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
@@ -23,22 +21,27 @@ import kotlin.math.max
 class LongestSequence {
 
     fun longestConsecutive(nums: IntArray): Int {
-        var maxValue = 0
-        val set = nums.toSet()
-        for (num in nums) {
+        if (nums.isEmpty()) return 0
 
-            if (num - 1 !in set) // Previous not in set means this is first sequence
-            {
-                var length = 1  // We can create it outside of condition but by doing wasting memory
-                while (set.contains(num + length)) {  // Use length not num
-                    length += 1
+        val numSet = nums.toHashSet()
+        var longestStreak = 0
+
+        for (num in numSet) {
+            // Only start counting if `num` is the start of a sequence
+            if (!numSet.contains(num - 1)) {
+                var currentNum = num
+                var currentStreak = 1
+
+                while (numSet.contains(currentNum + 1)) {
+                    currentNum++
+                    currentStreak++
                 }
-                maxValue = maxOf(maxValue, length)
-            }
 
+                longestStreak = maxOf(longestStreak, currentStreak)
+            }
         }
 
-        return maxValue
+        return longestStreak
     }
 }
 
