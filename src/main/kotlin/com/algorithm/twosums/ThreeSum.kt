@@ -62,6 +62,29 @@ class ThreeSum {
         println(result)
         return result
     }
+
+    fun threeSum(nums: IntArray): List<List<Int>> {
+        nums.sort()
+        val res = mutableListOf<List<Int>>()
+        for (i in 0 until nums.size - 2) {
+            var l = i + 1
+            var r = nums.size - 1
+            if (i > 0 && nums[i] == nums[i - 1]) continue
+            while (l < nums.size -1 && l < r) {
+                val sum = nums[i] + nums[l] + nums[r]
+                if (sum == 0) {
+                    res.add(listOf(nums[i], nums[l++], nums[r--]))
+                    while (l < r && nums[l] == nums[l - 1]) l++
+                    while (l < r && nums[r] == nums[r + 1]) r--
+                } else if (sum > 0) {
+                    r--
+                } else {
+                    l++
+                }
+            }
+        }
+        return res
+    }
 }
 
 fun List<Int>.contains(vararg nums: Int): Boolean {

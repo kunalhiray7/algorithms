@@ -1,6 +1,7 @@
 package lastStoneWeight
 
 import java.util.*
+import kotlin.collections.List
 
 
 class LastStoneWeight {
