@@ -43,13 +43,31 @@ class LongestSubstring {
         }
         return res
     }
+
+    fun lengthOfLongestSubstringMap(s: String): Int {
+        var max = 0
+        val charToIndexMap = mutableMapOf<Char, Int>()
+        var left = 0
+        var right = 0
+        while (right < s.length) {
+            val current = s[right]
+            if(charToIndexMap.contains(current) && charToIndexMap[current]!! >= left) {
+                left = charToIndexMap[current]!! + 1
+            }
+            max = maxOf(max, right - left + 1)
+            charToIndexMap[current] = right
+            right++
+        }
+
+        return max
+    }
 }
 
 fun main() {
-    println(LongestSubstring().lengthOfLongestSubstring1(" "))
-    println(LongestSubstring().lengthOfLongestSubstring1("abcabcbb"))
-    println(LongestSubstring().lengthOfLongestSubstring1("pwwkew"))
-    println(LongestSubstring().lengthOfLongestSubstring1("bbbb"))
-    println(LongestSubstring().lengthOfLongestSubstring1("aab"))
-    println(LongestSubstring().lengthOfLongestSubstring1("dvdf"))
+    println(LongestSubstring().lengthOfLongestSubstringMap(" ")) // 1
+    println(LongestSubstring().lengthOfLongestSubstringMap("abcabcbb")) // 3
+    println(LongestSubstring().lengthOfLongestSubstringMap("pwwkew")) // 3
+    println(LongestSubstring().lengthOfLongestSubstringMap("bbbb")) // 1
+    println(LongestSubstring().lengthOfLongestSubstringMap("aab")) // 2
+    println(LongestSubstring().lengthOfLongestSubstringMap("dvdf")) // 3
 }
