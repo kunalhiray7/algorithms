@@ -47,10 +47,29 @@ class SubarraysSumsDivisibleByK {
     private fun getSum(subarray: IntArray): Int {
         return subarray.sum()
     }
+
+    fun prefixModSubarraysDivByK(nums: IntArray, k: Int): Int {
+        var prefixMod = 0 // keep running prefixMod value
+        val mods = hashMapOf<Int, Int>() // map to keep track if we have seen the prefixMod before (and freq)
+        mods[0] = 1 // initialize start of map
+        var ans = 0 // keep track of the number of subarrays
+
+        // for each number, calculate prefixMod, increase answer by value or 0
+        // if not present, place into map or increase frequency of prefixMod by 1
+        for (num in nums) {
+            prefixMod = (prefixMod + num % k + k) % k // two modulo to avoid negative numbers
+            println(prefixMod)
+            ans += mods.getOrDefault(prefixMod, 0)
+            mods[prefixMod] = mods.getOrPut(prefixMod) { 0 } + 1
+        }
+        mods.forEach { println(it) }
+        return ans
+    }
+
 }
 
 fun main() {
     val o = SubarraysSumsDivisibleByK()
 
-    println(o.subarraysDivByK(intArrayOf(4, 5, 0, -2, -3, 1), 5))
+    println(o.prefixModSubarraysDivByK(intArrayOf(4, 5, 0, -2, -3, 1), 5))
 }
