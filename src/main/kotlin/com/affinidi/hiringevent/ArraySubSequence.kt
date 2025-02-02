@@ -11,11 +11,7 @@ class ArraySubSequence {
             i++
         }
 
-        if(j == sequence.size) {
-            return true
-        }
-
-        return false
+        return j == sequence.size
     }
 }
 
