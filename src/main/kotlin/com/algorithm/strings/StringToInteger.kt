@@ -115,21 +115,21 @@ class StringToInteger {
 
         while (i < s.length && s[i] == ' ') i++
 
-        var pos = true
+        var positive = true
         if (i != s.length && (s[i] == '+' || s[i] == '-')) {
-            pos = s[i] == '+'
+            positive = s[i] == '+'
             i++
         }
 
         while (i < s.length && s[i].isDigit()) {
             val digit = s[i++].digitToInt()
 
-            if (pos) {
+            result = if (positive) {
                 if (result > (Int.MAX_VALUE - digit) / 10) return Int.MAX_VALUE
-                result = result * 10 + digit
+                result * 10 + digit
             } else {
                 if (result < (Int.MIN_VALUE + digit) / 10) return Int.MIN_VALUE
-                result = result * 10 - digit
+                result * 10 - digit
             }
         }
 
