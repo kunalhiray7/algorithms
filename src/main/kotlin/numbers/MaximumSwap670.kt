@@ -1,4 +1,4 @@
-package com.algorithm.numbers
+package numbers
 
 import java.util.PriorityQueue
 import kotlin.math.min

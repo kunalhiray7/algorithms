@@ -1,7 +1,6 @@
-package minRemoveToMakeValidParenteses
+package parenthesis
 
 import java.util.Stack
-import kotlin.math.abs
 
 /**
  * A parentheses string is valid if and only if:

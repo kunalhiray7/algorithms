@@ -1,4 +1,4 @@
-package com.algorithm.strings
+package strings
 
 class PalindromeNumber {
 

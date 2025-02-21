@@ -1,4 +1,4 @@
-package com.algorithm.twosums
+package twosums
 
 /**
  * Given a 1-indexed array of integers numbers that is already sorted in non-decreasing order, find two numbers such that

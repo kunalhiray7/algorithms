@@ -1,4 +1,4 @@
-package com.algorithm.twosums
+package twosums
 
 class TwoSum {
     fun calculateTwoSum(nums: IntArray, target: Int): IntArray {

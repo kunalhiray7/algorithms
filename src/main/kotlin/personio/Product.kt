@@ -1,4 +1,4 @@
-package com.algorithm.personio
+package personio
 
 import java.util.concurrent.LinkedBlockingDeque
 

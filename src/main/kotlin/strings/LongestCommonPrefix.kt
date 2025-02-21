@@ -1,4 +1,4 @@
-package com.algorithm.strings
+package strings
 
 import java.lang.StringBuilder
 

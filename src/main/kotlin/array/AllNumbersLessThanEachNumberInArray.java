@@ -1,6 +1,5 @@
-package com.algorithm.array;
+package array;
 
-import java.io.*;
 import java.util.*;
 
 public class AllNumbersLessThanEachNumberInArray {

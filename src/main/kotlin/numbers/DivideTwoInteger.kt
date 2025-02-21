@@ -1,4 +1,4 @@
-package com.algorithm.numbers
+package numbers
 
 import kotlin.math.abs
 

@@ -1,4 +1,4 @@
-package minRemoveToMakeValidParenteses
+package parenthesis
 
 import java.util.*
 

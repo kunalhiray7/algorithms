@@ -1,4 +1,4 @@
-package com.affinidi.hiringevent
+package array
 
 class ArraySubSequence {
     fun isValidSequence(array: List<Int>, sequence: List<Int>): Boolean {

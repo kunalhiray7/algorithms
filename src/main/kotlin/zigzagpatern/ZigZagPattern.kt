@@ -1,4 +1,4 @@
-package com.algorithm.zigzagpatern
+package zigzagpatern
 
 import java.lang.StringBuilder
 
