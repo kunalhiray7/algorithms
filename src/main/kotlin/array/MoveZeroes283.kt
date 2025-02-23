@@ -42,15 +42,31 @@ class MoveZeroes283 {
             }
         }
     }
+
+    fun moveZeroes1(nums: IntArray) {
+        var zeroCount = 0
+        var nonZeroIndex = 0
+        for(i in nums.indices) {
+            if(nums[i] != 0) {
+                nums[nonZeroIndex] = nums[i]
+                nonZeroIndex++
+            } else {
+                zeroCount++
+            }
+        }
+        for(i in nums.size - 1 downTo nums.size - zeroCount) {
+            nums[i] = 0
+        }
+    }
 }
 
 fun main() {
 
     val testClass = MoveZeroes283()
     val nums = intArrayOf(0, 1, 0, 3, 12)
-    testClass.moveZeroesOptimized(nums)
+    testClass.moveZeroes1(nums)
     println(nums.contentToString())
     val nums1 = intArrayOf(0, 0, 1)
-    testClass.moveZeroesOptimized(nums1)
+    testClass.moveZeroes1(nums1)
     println(nums1.contentToString())
 }
