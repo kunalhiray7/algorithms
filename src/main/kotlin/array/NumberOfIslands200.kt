@@ -27,7 +27,7 @@ package array
  * Output: 3
  */
 class NumberOfIslands200 {
-    fun numIslands(grid: Array<CharArray>): Int {
+    /*fun numIslands(grid: Array<CharArray>): Int {
         var noOfIslands = 0
 
         grid.forEachIndexed { row, chars ->
@@ -65,28 +65,40 @@ class NumberOfIslands200 {
         }
 
         return true
+    }*/
+
+    fun numIslands(grid: Array<CharArray>): Int {
+        if (grid.isEmpty()) return 0
+
+        var noOfIslands = 0
+        val rows = grid.size
+        val cols = grid[0].size
+
+        for (row in 0 until rows) {
+            for (col in 0 until cols) {
+                if (grid[row][col] == '1') {
+                    noOfIslands++
+                    dfs(grid, row, col)
+                }
+            }
+        }
+
+        return noOfIslands
     }
 
-//    data class Island(
-//        val points: List<Pair<Int, Int>> = mutableListOf()
-//    )
-//
-//    fun numIslands1(grid: Array<CharArray>): Int {
-//        val islands = mutableListOf<Island>()
-//        grid.forEachIndexed { row, chars ->
-//            chars.forEachIndexed { col, cell ->
-//                if(cell == '1') {
-//                    if(!existsInIslands(islands, row, col)) {
-//                        islands.add(Island(mutableListOf(row to col)))
-//                    } else {
-//
-//                    }
-//                }
-//            }
-//        }
-//
-//        return islands.size
-//    }
+    private fun dfs(grid: Array<CharArray>, row: Int, col: Int) {
+        if (row < 0 || col < 0 || row >= grid.size || col >= grid[0].size || grid[row][col] == '0') {
+            return
+        }
+
+        grid[row][col] = '0' // Mark the cell as visited
+
+        // Visit all adjacent cells (up, down, left, right)
+        dfs(grid, row - 1, col)
+        dfs(grid, row + 1, col)
+        dfs(grid, row, col - 1)
+        dfs(grid, row, col + 1)
+    }
 }
 
 fun main() {
