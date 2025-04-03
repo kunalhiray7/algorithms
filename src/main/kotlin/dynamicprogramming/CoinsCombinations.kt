@@ -3,7 +3,7 @@ package dynamicprogramming
 import java.util.*
 
 
-class DynamicProgramming {
+class CoinsCombinations {
 
     /*
     Given coin denominations and total amount, find out the number of ways to make the change.
@@ -42,7 +42,7 @@ class DynamicProgramming {
 }
 
 fun main() {
-    val dynamicProgramming = DynamicProgramming()
+    val coinsCombinations = CoinsCombinations()
     val denominations = intArrayOf(1, 2, 3, 5)
-    dynamicProgramming.coinCombinations(7, denominations, 0, LinkedList<Int>())
+    coinsCombinations.coinCombinations(7, denominations, 0, LinkedList<Int>())
 }
