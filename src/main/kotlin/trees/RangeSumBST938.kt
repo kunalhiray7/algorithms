@@ -3,18 +3,14 @@ package trees
 class RangeSumBST938 {
 
     fun rangeSumBST(root: TreeNode?, low: Int, high: Int): Int {
-        return rangeSumBst(root, low, high, 0)
-    }
-
-    private fun rangeSumBst(root: TreeNode?, low: Int, high: Int, sum: Int): Int {
         if (root == null) {
-            return sum
+            return 0
         }
-        return if (root.`val` >= low && root.`val` <= high) {
-            rangeSumBst(root.left, low, high, sum + root.`val`)
-            rangeSumBst(root.right, low, high, sum + root.`val`)
-        } else {
-            sum
+        val sum = when (root.`val` in low..high) {
+            true -> root.`val`
+            else -> 0
         }
+
+        return sum + rangeSumBST(root.left, low, high) + rangeSumBST(root.right, low, high)
     }
 }
